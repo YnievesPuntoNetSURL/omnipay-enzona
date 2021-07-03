@@ -1,0 +1,31 @@
+{
+    "name": "ynievesdotnetteam/omnipay-paypal",
+    "type": "library",
+    "description": "EnZona gateway for Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "enzona",
+        "purchase"
+    ],
+    "homepage": "https://github.com/ynievesdotnetteam/omnipay-enzona",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yoinier Hernández Nieves",
+            "email": "me@ynieves.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\EnZona\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3"
+    }
+}
