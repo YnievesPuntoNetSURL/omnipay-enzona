@@ -18,7 +18,7 @@ composer require ynievespuntonetsurl/omnipay-enzona
 
 The following gateways are provided by this package:
 
-* Enzona_NomenclatorAPI [XMET_NomenclatorAPI](https://api.enzona.net/store/apis/info?name=XMET_NomenclatorAPI&version=v1.0.0&provider=admin)
+* [Enzona_NomenclatorAPI](https://api.enzona.net/store/apis/info?name=XMET_NomenclatorAPI&version=v1.0.0&provider=admin)
   * getExchangeRate()
   * getServices()
   * getCCosts()
