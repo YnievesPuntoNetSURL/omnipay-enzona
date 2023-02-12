@@ -1,7 +1,7 @@
 {
-    "name": "ynievesdotnetteam/omnipay-paypal",
+    "name": "ynievespuntonetsurl/omnipay-enzona",
     "type": "library",
-    "description": "EnZona gateway for Omnipay payment processing library",
+    "description": "Enzona gateway for Omnipay payment processing library",
     "keywords": [
         "gateway",
         "merchant",
@@ -11,21 +11,35 @@
         "enzona",
         "purchase"
     ],
-    "homepage": "https://github.com/ynievesdotnetteam/omnipay-enzona",
+    "homepage": "https://github.com/ynievespuntonetsurl/omnipay-enzona",
     "license": "MIT",
     "authors": [
         {
             "name": "Yoinier Hernández Nieves",
-            "email": "me@ynieves.net"
+            "email": "ynieves@ynieves.net"
         }
     ],
     "autoload": {
-        "psr-4": { "Omnipay\\EnZona\\" : "src/" }
+        "psr-4": { "Omnipay\\Enzona\\" : "src/" }
     },
     "require": {
+        "php": "^7.2|^8.0",
         "omnipay/common": "^3"
     },
     "require-dev": {
-        "omnipay/tests": "^3"
+        "omnipay/tests": "^4.1.2",
+        "php-http/guzzle7-adapter": "^1.0",
+        "symfony/var-dumper": "^6.2"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 src/",
+        "fix-style": "phpcbf -p --standard=PSR2 src/"
+    },
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
     }
 }
