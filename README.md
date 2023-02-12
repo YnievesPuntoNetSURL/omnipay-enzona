@@ -29,6 +29,11 @@ The following gateways are provided by this package:
   * getTransfersConcept()
   * getgetJobPositions()
   * getOnatConcept()
+* [Enzona_QRAPI](https://api.enzona.net/store/apis/info?name=QRAPI&version=v1.0.0&provider=admin)
+  * createAccount($parameters = array())
+  * getQRInfo($parameters = array())
+  * getQRPayments($parameters = array())
+  * createMerchant($parameters = array())
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.
