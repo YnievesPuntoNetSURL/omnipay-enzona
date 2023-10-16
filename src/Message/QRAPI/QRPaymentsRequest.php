@@ -8,11 +8,11 @@ class QRPaymentsRequest extends \Omnipay\Enzona\Message\AbstractRequest
     {
         $this->validate('qr_code');
 
-        return array(
+        return [
             'service' => 'qr',
-            'endpoint' => 'qr/payments/' . $this->getQrCode(),
-            'data' => []
-        );
+            'endpoint' => 'qr/payments/'.$this->getQrCode(),
+            'data' => [],
+        ];
     }
 
     protected function getHttpMethod()
@@ -30,4 +30,3 @@ class QRPaymentsRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return $this->setParameter('qr_code', $value);
     }
 }
-?>

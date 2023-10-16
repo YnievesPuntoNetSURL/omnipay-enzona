@@ -34,6 +34,10 @@ The following gateways are provided by this package:
   * getQRInfo($parameters = array())
   * getQRPayments($parameters = array())
   * createMerchant($parameters = array())
+* [Enzona_PaymentAPI](https://api.enzona.net/store/apis/info?name=PaymentAPI&version=v1.0.0&provider=admin)
+  * getPaymentsRefunds($parameters = array())
+  * createPayment($parameters = array())
+  * getPaymentsInfo($parameters = array())
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.

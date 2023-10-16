@@ -3,8 +3,6 @@
 namespace Omnipay\Enzona;
 
 use Omnipay\Common\AbstractGateway;
-use Omnipay\Common\ItemBag;
-use Symfony\Component\CssSelector\Node\FunctionNode;
 
 class BaseGateway extends AbstractGateway
 {
@@ -42,18 +40,18 @@ class BaseGateway extends AbstractGateway
      */
     public function createToken()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\AccessTokenRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\AccessTokenRequest', []);
     }
 
     /**
      * Get OAuth 2.0 access token.
      *
-     * @param bool $createIfNeeded [optional] - If there is not an active token present, should we create one?
+     * @param  bool  $createIfNeeded [optional] - If there is not an active token present, should we create one?
      * @return string
      */
     public function getToken($createIfNeeded = true)
     {
-        if ($createIfNeeded && !$this->hasToken()) {
+        if ($createIfNeeded && ! $this->hasToken()) {
             $response = $this->createToken()->send();
             if ($response->isSuccessful()) {
                 $data = $response->getData();
@@ -70,7 +68,7 @@ class BaseGateway extends AbstractGateway
     /**
      * Set OAuth 2.0 access token.
      *
-     * @param string $value
+     * @param  string  $value
      * @return RestGateway provides a fluent interface
      */
     public function setToken($value)
@@ -81,7 +79,7 @@ class BaseGateway extends AbstractGateway
     /**
      * Get OAuth 2.0 access token expiry time.
      *
-     * @return integer
+     * @return int
      */
     public function getTokenExpires()
     {
@@ -91,7 +89,7 @@ class BaseGateway extends AbstractGateway
     /**
      * Set OAuth 2.0 access token expiry time.
      *
-     * @param integer $value
+     * @param  int  $value
      * @return RestGateway provides a fluent interface
      */
     public function setTokenExpires($value)
@@ -109,11 +107,11 @@ class BaseGateway extends AbstractGateway
         $token = $this->getParameter('token');
 
         $expires = $this->getTokenExpires();
-        if (!empty($expires) && !is_numeric($expires)) {
+        if (! empty($expires) && ! is_numeric($expires)) {
             $expires = strtotime($expires);
         }
 
-        return !empty($token) && time() < $expires;
+        return ! empty($token) && time() < $expires;
     }
 
     /**
@@ -125,13 +123,12 @@ class BaseGateway extends AbstractGateway
      * token is available then a new one is created (e.g. if there has been no
      * token request or the current token has expired).
      *
-     * @param string $class
-     * @param array $parameters
+     * @param  string  $class
      * @return \Omnipay\Enzona\Message\AbstractRestRequest
      */
-    public function createRequest($class, array $parameters = array())
+    public function createRequest($class, array $parameters = [])
     {
-        if (!$this->hasToken() && $class != '\Omnipay\Enzona\Message\AccessTokenRequest') {
+        if (! $this->hasToken() && $class != '\Omnipay\Enzona\Message\AccessTokenRequest') {
             // This will set the internal token parameter which the parent
             // createRequest will find when it calls getParameters().
             $this->getToken(true);
@@ -140,62 +137,62 @@ class BaseGateway extends AbstractGateway
         return parent::createRequest($class, $parameters);
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return false;
     }
 
-    public function acceptNotification($options = array())
+    public function acceptNotification($options = [])
     {
         return false;
     }
 
-    public function authorize(array $parameters = array())
+    public function authorize(array $parameters = [])
     {
         return false;
     }
 
-    public function completeAuthorize(array $parameters = array())
+    public function completeAuthorize(array $parameters = [])
     {
         return false;
     }
 
-    public function capture(array $parameters = array())
+    public function capture(array $parameters = [])
     {
         return false;
     }
 
-    public function completePurchase(array $parameters = array())
+    public function completePurchase(array $parameters = [])
     {
         return false;
     }
 
-    public function refund(array $parameters = array())
+    public function refund(array $parameters = [])
     {
         return false;
     }
 
-    public function fetchTransaction(array $parameters = array())
+    public function fetchTransaction(array $parameters = [])
     {
         return false;
     }
 
-    public function void(array $parameters = array())
+    public function void(array $parameters = [])
     {
         return false;
     }
 
-    public function createCard(array $parameters = array())
+    public function createCard(array $parameters = [])
     {
         return false;
     }
 
-    public function updateCard(array $parameters = array())
+    public function updateCard(array $parameters = [])
     {
         return false;
     }
 
-    public function deleteCard(array $parameters = array())
+    public function deleteCard(array $parameters = [])
     {
         return false;
     }

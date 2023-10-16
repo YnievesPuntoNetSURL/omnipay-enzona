@@ -6,11 +6,11 @@ class ServicesRequest extends \Omnipay\Enzona\Message\AbstractRequest
 {
     public function getData()
     {
-        return array(
+        return [
             'service' => 'xmetnomenclator',
             'endpoint' => 'services',
-            'data' => []
-        );
+            'data' => [],
+        ];
     }
 
     protected function getHttpMethod()
@@ -18,4 +18,3 @@ class ServicesRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return 'GET';
     }
 }
-?>

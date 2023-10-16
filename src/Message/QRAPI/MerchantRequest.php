@@ -8,7 +8,7 @@ class MerchantRequest extends \Omnipay\Enzona\Message\AbstractRequest
     {
         $this->validate('amount', 'currency', 'description', 'returnUrl', 'notifyUrl', 'terminal_id', 'permanent');
 
-        return array(
+        return [
             'service' => 'qr',
             'endpoint' => 'qr/merchant',
             'data' => [
@@ -18,9 +18,9 @@ class MerchantRequest extends \Omnipay\Enzona\Message\AbstractRequest
                 'return_url' => $this->getReturnUrl(),
                 'notify_url' => $this->getNotifyUrl(),
                 'terminal_id' => $this->getTerminalId(),
-                'permanent' => $this->getPermanent()
-            ]
-        );
+                'permanent' => $this->getPermanent(),
+            ],
+        ];
     }
 
     protected function getHttpMethod()
@@ -48,4 +48,3 @@ class MerchantRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return $this->setParameter('permanent', $value);
     }
 }
-?>

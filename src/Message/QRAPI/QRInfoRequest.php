@@ -8,13 +8,13 @@ class QRInfoRequest extends \Omnipay\Enzona\Message\AbstractRequest
     {
         $this->validate('qr_code');
 
-        return array(
+        return [
             'service' => 'qr',
-            'endpoint' => 'qr/' . $this->getQrCode(),
+            'endpoint' => 'qr/'.$this->getQrCode(),
             'data' => [
                 'cash_advance' => $this->getCashAdvance(),
-            ]
-        );
+            ],
+        ];
     }
 
     protected function getHttpMethod()
@@ -42,4 +42,3 @@ class QRInfoRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return $this->setParameter('cash_advance', $value);
     }
 }
-?>

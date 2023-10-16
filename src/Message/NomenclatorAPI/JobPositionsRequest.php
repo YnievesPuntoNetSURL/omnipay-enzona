@@ -6,11 +6,11 @@ class JobPositionsRequest extends \Omnipay\Enzona\Message\AbstractRequest
 {
     public function getData()
     {
-        return array(
+        return [
             'service' => 'xmetnomenclator',
             'endpoint' => 'jobPositions',
-            'data' => []
-        );
+            'data' => [],
+        ];
     }
 
     protected function getHttpMethod()
@@ -18,4 +18,3 @@ class JobPositionsRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return 'GET';
     }
 }
-?>

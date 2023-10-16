@@ -6,10 +6,10 @@ class AccessTokenRequest extends AbstractRequest
 {
     public function getData()
     {
-        return array(
+        return [
             'grant_type' => 'client_credentials',
-            'scope' => 'enzona_business_payment'
-        );
+            'scope' => 'enzona_business_payment',
+        ];
     }
 
     public function sendData($data)
@@ -19,7 +19,7 @@ class AccessTokenRequest extends AbstractRequest
         $body = $data ? http_build_query($data, '', '&') : null;
         $headers = [
             'content-type' => 'application/x-www-form-urlencoded',
-            'Authorization' => 'Basic ' . base64_encode($this->getConsumerKey() .':' . $this->getConsumerSecret()),
+            'Authorization' => 'Basic '.base64_encode($this->getConsumerKey().':'.$this->getConsumerSecret()),
         ];
         $httpResponse = $this->httpClient->request(
             'POST',
@@ -29,9 +29,8 @@ class AccessTokenRequest extends AbstractRequest
         );
 
         $body = (string) $httpResponse->getBody()->getContents();
-        $jsonToArrayResponse = !empty($body) ? json_decode($body, true) : array();
+        $jsonToArrayResponse = ! empty($body) ? json_decode($body, true) : [];
+
         return $this->response = new RestResponse($this, $jsonToArrayResponse, $httpResponse->getStatusCode());
     }
 }
-
-?>

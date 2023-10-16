@@ -6,11 +6,11 @@ class MunicipalityRequest extends \Omnipay\Enzona\Message\AbstractRequest
 {
     public function getData()
     {
-        return array(
+        return [
             'service' => 'xmetnomenclator',
             'endpoint' => 'municipality',
-            'data' => []
-        );
+            'data' => [],
+        ];
     }
 
     protected function getHttpMethod()
@@ -18,4 +18,3 @@ class MunicipalityRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return 'GET';
     }
 }
-?>

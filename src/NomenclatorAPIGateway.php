@@ -11,52 +11,51 @@ class NomenclatorAPIGateway extends BaseGateway
 
     public function getExchangeRate()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\ExchangeRateRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\ExchangeRateRequest', []);
     }
 
     public function getServices()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\ServicesRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\ServicesRequest', []);
     }
 
     public function getCCosts()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\CCostsRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\CCostsRequest', []);
     }
 
     public function getAccountingOper()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\AccountingOperRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\AccountingOperRequest', []);
     }
 
     public function getCoins()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\CoinsRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\CoinsRequest', []);
     }
 
     public function getMunicipality()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\MunicipalityRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\MunicipalityRequest', []);
     }
 
     public function getRoles()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\RolesRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\RolesRequest', []);
     }
 
     public function getTransfersConcept()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\TransfersConceptRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\TransfersConceptRequest', []);
     }
 
     public function getJobPositions()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\JobPositionsRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\JobPositionsRequest', []);
     }
 
     public function getOnatConcept()
     {
-        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\OnatConceptRequest', array());
+        return $this->createRequest('\Omnipay\Enzona\Message\NomenclatorAPI\OnatConceptRequest', []);
     }
 }
-?>

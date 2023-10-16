@@ -10,8 +10,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getData()
     {
-        $data = $this->getExternalReference();
-        return $data;
+        return $this->getExternalReference();
     }
 
     public function setExternalReference($value)
@@ -47,9 +46,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     protected function getEndpoint($service, $endpoint = '')
     {
         if ($endpoint != '') {
-            $service .= '/v1.0.0/'. $endpoint;
+            $service .= '/v1.0.0/'.$endpoint;
         }
-        return $this->endpointURL . $service;
+
+        return $this->endpointURL.$service;
     }
 
     /**
@@ -68,37 +68,42 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         // Guzzle HTTP Client createRequest does funny things when a GET request
         // has attached data, so don't send the data if the method is GET.
+        $options = JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK;
+        
         if ($this->getHttpMethod() == 'GET') {
-            $requestUrl = $this->getEndpoint($data['service'], $data['endpoint']) . '?' . http_build_query($data['data']);
+            $requestUrl = $this->getEndpoint($data['service'], $data['endpoint']).'?'.http_build_query($data['data']);
             $body = null;
         } else {
-            $body = $this->toJSON($data);
             $requestUrl = $this->getEndpoint($data['service'], $data['endpoint']);
+            $body = $this->toJSON($data['data'], $options);
         }
 
         // Might be useful to have some debug code here, Enzona especially can be
         // a bit fussy about data formats and ordering.  Perhaps hook to whatever
         // logging engine is being used.
-        echo "Data == " . json_encode($data) . "\n";
-        echo "Request URL == " . $requestUrl . "\n";
+        // TODO: Uncomment to debug request
+        //echo 'Data == '.json_encode($data)."\n";
+        //echo 'Request URL == '.$requestUrl."\n";
+        //echo 'Body == '.$body."\n";
         try {
             $httpResponse = $this->httpClient->request(
                 $this->getHttpMethod(),
                 $requestUrl,
-                array(
+                [
                     'Accept' => 'application/json',
-                    'Authorization' => 'Bearer ' . $this->getToken(),
-                    'Content-type' => 'application/json'
-                ),
+                    'Authorization' => 'Bearer '.$this->getToken(),
+                    'Content-type' => 'application/json',
+                ],
                 $body
             );
             // Empty response body should be parsed also as and empty array
             $body = (string) $httpResponse->getBody()->getContents();
-            $jsonToArrayResponse = !empty($body) ? json_decode($body, true) : array();
+            $jsonToArrayResponse = ! empty($body) ? json_decode($body, true) : [];
+
             return $this->response = $this->createResponse($jsonToArrayResponse, $httpResponse->getStatusCode());
         } catch (\Exception $e) {
             throw new InvalidResponseException(
-                'Error communicating with payment gateway: ' . $e->getMessage(),
+                'Error communicating with payment gateway: '.$e->getMessage(),
                 $e->getCode()
             );
         }
@@ -107,8 +112,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function toJSON($data, $options = 0)
     {
         if (version_compare(phpversion(), '5.4.0', '>=') === true) {
-            return json_encode($data, $options | 64);
+            return json_encode($data, $options);
         }
+
         return str_replace('\\/', '/', json_encode($data, $options));
     }
 
@@ -117,5 +123,3 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->response = new RestResponse($this, $data, $statusCode);
     }
 }
-
-?>

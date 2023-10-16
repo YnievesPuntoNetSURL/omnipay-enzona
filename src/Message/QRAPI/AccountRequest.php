@@ -8,15 +8,15 @@ class AccountRequest extends \Omnipay\Enzona\Message\AbstractRequest
     {
         $this->validate('amount', 'currency', 'description');
 
-        return array(
+        return [
             'service' => 'qr',
             'endpoint' => 'qr/account',
             'data' => [
                 'amount' => $this->getAmount(),
                 'currency' => $this->getCurrency(),
-                'description' => $this->getDescription()
-            ]
-        );
+                'description' => $this->getDescription(),
+            ],
+        ];
     }
 
     protected function getHttpMethod()
@@ -24,4 +24,3 @@ class AccountRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return 'POST';
     }
 }
-?>

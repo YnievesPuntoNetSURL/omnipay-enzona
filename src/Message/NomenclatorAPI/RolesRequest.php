@@ -6,13 +6,13 @@ class RolesRequest extends \Omnipay\Enzona\Message\AbstractRequest
 {
     public function getData()
     {
-        return array(
+        return [
             'service' => 'xmetnomenclator',
             'endpoint' => 'roles',
             'data' => [
-                'accountant' => $this->getAccountant()
-            ]
-        );
+                'accountant' => $this->getAccountant(),
+            ],
+        ];
     }
 
     public function setAccountant($value)
@@ -30,4 +30,3 @@ class RolesRequest extends \Omnipay\Enzona\Message\AbstractRequest
         return 'GET';
     }
 }
-?>

@@ -19,5 +19,3 @@ abstract class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
         return empty($this->data['error']) && $this->getCode() < 400;
     }
 }
-
-?>
