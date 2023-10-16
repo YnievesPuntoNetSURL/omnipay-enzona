@@ -3,8 +3,9 @@
 namespace Omnipay\Enzona\Message;
 
 use Omnipay\Common\Exception\InvalidResponseException;
+use Omnipay\Common\Message\AbstractRequest as OmniPayAbstractRequest;
 
-abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
+abstract class AbstractRequest extends OmniPayAbstractRequest
 {
     protected $endpointURL = 'https://api.enzona.net/';
 

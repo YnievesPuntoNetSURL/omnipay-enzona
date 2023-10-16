@@ -3,8 +3,9 @@
 namespace Omnipay\Enzona\Message;
 
 use Omnipay\Common\Message\RequestInterface;
+use Omnipay\Common\Message\AbstractResponse as OmiPayAbstractResponse;
 
-abstract class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
+abstract class AbstractResponse extends OmiPayAbstractResponse
 {
     protected $statusCode;
 
